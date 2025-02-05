@@ -8,7 +8,8 @@ PANTRY_FILE = "data/pantry.json"
 # Standard Metric & Imperial Units
 UNITS = [
     "grams", "kilograms", "milliliters", "liters",  # Metric
-    "ounces", "pounds", "cups", "teaspoons", "tablespoons"  # Imperial
+    "ounces", "pounds", "cups", "teaspoons", "tablespoons",  # Imperial
+    "Each" # For objects that aren't measured (tomatoes, onions, etc.)
 ]
 
 # Ensure pantry.json exists
@@ -45,6 +46,11 @@ def add_ingredient(name, category, quantity, unit):
 
     return format_pantry_display(pantry["ingredients"])
 
+# Clear pantry function
+def clear_pantry():
+    save_pantry({"ingredients": []})
+    return "No ingredients in pantry."
+
 # Format pantry list for display
 def format_pantry_display(ingredients):
     if not ingredients:
@@ -74,12 +80,16 @@ def pantry_page():
         # Pantry Display
         pantry_display = gr.Textbox(value=format_pantry_display(pantry["ingredients"]), interactive=False, label="Current Pantry")
 
-        # Add Button
+        # Buttons
         add_button = gr.Button("Add Ingredient")
+        clear_button = gr.Button("Clear Pantry")
 
         # Click Event for Adding Ingredients
         add_button.click(add_ingredient, 
                          inputs=[name_input, category_input, quantity_input, unit_selection], 
                          outputs=pantry_display)
+
+        # Click Event for Clearing Pantry
+        clear_button.click(clear_pantry, outputs=pantry_display)
 
     return page
