@@ -1,5 +1,19 @@
 {
     "ingredients": [
-        
+        {
+            "name": "oranges",
+            "category": "Staple",
+            "quantity": "2 None"
+        },
+        {
+            "name": "chicken",
+            "category": "Staple",
+            "quantity": "2 None"
+        },
+        {
+            "name": "rice",
+            "category": "Staple",
+            "quantity": "2 None"
+        }
     ]
 }

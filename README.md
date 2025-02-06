@@ -10,15 +10,25 @@ want the application to go for.
 and use those to find a recipe based off of a narrower selection.
 
 ## Architecture
-Application uses a PySide front-end incorportated with Gemini api calls to find
-recipes in accordance with user desires.
+### Initial Application
+Application uses a PySide front-end incorportated with "untrained" Gemini api calls to find
+recipes in accordance with user desires. Gemini prompts use prompt engineering to
+build the request based off of ingredients, diet, cuisine, and prefered ingredients.
+
+### Refactored Application
+Application uses a gradio frontside incorportated with a model trained off of 
+[this dataset](AkashPS11/recipes_data_food.com). Receipes are normalized and cleaned
+so that ingredients, quantities, and units become standardized. Taking this model, 
+our application utilizes 
+#### FINSISH WHEN APP ~DONE
+
 ## Setting up the Environment
 [Install Conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html#)
 in the command line, run:
 ```
 conda env create -f environment.yml
 ```
-## Requesting a Gemini API Key
+## Initial - Requesting a Gemini API Key
 (Copied from bookcamp spot)\
 Before we get to building an AI-powered application, we will need to obtain an OpenAI API key.
 
@@ -35,8 +45,18 @@ Before we get to building an AI-powered application, we will need to obtain an O
 6. Then, take the key that was generated and add it as a environmental varaible named GEMINI_API_KEY.
 
 ## Running
-1. Navigate to /project_3/scripts/ui in a CLI
+### Initial
+1. Navigate to /project-3/scripts-old/ui in a CLI
 2. run
 ```
+conda activate meal-planner
 python kitchen_ui.py
 ```
+### Refactored
+1. Navigate to /project-3 in a CLI
+2. run
+```
+conda activate meal-planner
+python app.py
+```
+3. Open [the local port operating](http://127.0.0.1:7860) or copy paste the url from the output.
