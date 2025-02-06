@@ -29,22 +29,19 @@ def save_pantry(data):
 def add_ingredient(name, category, quantity, unit):
     pantry = load_pantry()
 
-    # ✅ Get importance weight from pantry_manager
-    weight = get_ingredient_weight(name)
-
     # Create new ingredient entry
     new_item = {
         "name": name,
         "category": category,
         "quantity": f"{quantity} {unit}" if quantity else "N/A",
-        "weight": weight  # Store LLM-determined importance weight
+        # "weight": weight  # Store LLM-determined importance weight
     }
 
     # Append to pantry list and save
     pantry["ingredients"].append(new_item)
     save_pantry(pantry)
 
-    return f"Added {name} ({category}) - {quantity} {unit} | Weight: {weight}"
+    return f"Added {name} ({category}) - {quantity} {unit}"
 
 
 
@@ -53,7 +50,7 @@ def format_pantry_display(ingredients):
     if not ingredients:
         return "No ingredients in pantry."
     
-    return "\n".join([f"{item['name']} ({item['category']}) - Qty: {item['quantity']} - Weight: {item['importance_weight']:.2f}" for item in ingredients])
+    return "\n".join([f"{item['name']} ({item['category']}) - Qty: {item['quantity']}" for item in ingredients])
 
 # Build Gradio UI
 def pantry_page():
