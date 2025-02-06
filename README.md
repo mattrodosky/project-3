@@ -9,6 +9,10 @@ want the application to go for.
 - Go to computer to find flavor pairings based on what you have to create a smaller pantry
 and use those to find a recipe based off of a narrower selection.
 
+The application is a 2-step llm. First it gathers ingredients and finds recipes
+that can be made using them, then it takes a recipe name and generates the directions
+to create the recipe.
+
 ## Architecture
 ### Initial Application
 Application uses a PySide front-end incorportated with "untrained" Gemini api calls to find
@@ -17,10 +21,11 @@ build the request based off of ingredients, diet, cuisine, and prefered ingredie
 
 ### Refactored Application
 Application uses a gradio frontside incorportated with a model trained off of 
-[this dataset](AkashPS11/recipes_data_food.com). Receipes are normalized and cleaned
-so that ingredients, quantities, and units become standardized. Taking this model, 
-our application utilizes 
-#### FINSISH WHEN APP ~DONE
+[this dataset](AkashPS11/recipes_data_food.com). Ingredients are normalized and cleaned
+so that ingredients, quantities, and units become standardized, and the model is trained
+to link recipe names with the ingredients. After this, a json with ingredients can
+be supplied and used to find recipes to make. In the second step of this model, 
+a recipe name is provided and used to determine the steps to create that recipe.
 
 ## Setting up the Environment
 [Install Conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html#)
@@ -60,3 +65,8 @@ conda activate meal-planner
 python app.py
 ```
 3. Open [the local port operating](http://127.0.0.1:7860) or copy paste the url from the output.
+
+## Current Status
+1. The refactoring of the project is yet to be complete as we were facing issues
+with training the model.
+2. Computer page (for building recipes) is non-functional in the refactor.
