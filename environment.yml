@@ -1,0 +1,21 @@
+name: meal-planner
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.9
+  - pandas
+  - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cpuonly
+  - pip:
+      - pyside6
+      - python-dotenv
+      - langchain
+      - langchain-google-genai
+      - datasets
+      - transformers
+      - gradio
