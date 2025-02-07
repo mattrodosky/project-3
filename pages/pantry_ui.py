@@ -1,7 +1,6 @@
 import gradio as gr
 import json
 import os
-from scripts.pantry_manager import get_ingredient_weight  # ✅ Import the modular function
 
 # Pantry file location
 PANTRY_FILE = "data/pantry.json"

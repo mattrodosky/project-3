@@ -3,8 +3,97 @@
         {
             "name": "Chicken",
             "category": "Staple",
-            "quantity": "4 pounds",
-            "weight": 0.5
+            "quantity": "4 pounds"
+        },
+        {
+            "name": "Flour",
+            "category": "Staple",
+            "quantity": "2 kilograms"
+        },
+        {
+            "name": "Sugar",
+            "category": "Staple",
+            "quantity": "1 kilograms"
+        },
+        {
+            "name": "Butter",
+            "category": "Staple",
+            "quantity": "500 grams"
+        },
+        {
+            "name": "Milk",
+            "category": "Staple",
+            "quantity": "1 liters"
+        },
+        {
+            "name": "Eggs",
+            "category": "Staple",
+            "quantity": "12 Each"
+        },
+        {
+            "name": "Garlic",
+            "category": "Rotating",
+            "quantity": "5 Each"
+        },
+        {
+            "name": "Onion",
+            "category": "Rotating",
+            "quantity": "3 Each"
+        },
+        {
+            "name": "Tomato",
+            "category": "Rotating",
+            "quantity": "4 Each"
+        },
+        {
+            "name": "Basil",
+            "category": "Rotating",
+            "quantity": "1 cups"
+        },
+        {
+            "name": "Olive Oil",
+            "category": "Staple",
+            "quantity": "500 milliliters"
+        },
+        {
+            "name": "Salt",
+            "category": "Staple",
+            "quantity": "200 grams"
+        },
+        {
+            "name": "Black Pepper",
+            "category": "Staple",
+            "quantity": "100 grams"
+        },
+        {
+            "name": "Pasta",
+            "category": "Rotating",
+            "quantity": "500 grams"
+        },
+        {
+            "name": "Cheese",
+            "category": "Rotating",
+            "quantity": "300 grams"
+        },
+        {
+            "name": "Soy Sauce",
+            "category": "Staple",
+            "quantity": "250 milliliters"
+        },
+        {
+            "name": "Vinegar",
+            "category": "Staple",
+            "quantity": "250 milliliters"
+        },
+        {
+            "name": "Honey",
+            "category": "Rotating",
+            "quantity": "2 tablespoons"
+        },
+        {
+            "name": "Cinnamon",
+            "category": "Rotating",
+            "quantity": "1 teaspoons"
         }
     ]
 }
