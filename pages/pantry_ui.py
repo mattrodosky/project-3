@@ -1,24 +1,19 @@
 import gradio as gr
 import json
 import os
+from scripts.pantry_manager import get_ingredient_weight  # ✅ Import the modular function
 
-# File path for pantry data
+# Pantry file location
 PANTRY_FILE = "data/pantry.json"
 
-# Standard Metric & Imperial Units
-UNITS = [
-    "grams", "kilograms", "milliliters", "liters",  # Metric
-    "ounces", "pounds", "cups", "teaspoons", "tablespoons"  # Imperial
-]
-
-# Ensure pantry.json exists
-def initialize_json():
+# Ensure pantry file exists
+def initialize_pantry():
     os.makedirs("data", exist_ok=True)
     if not os.path.exists(PANTRY_FILE):
         with open(PANTRY_FILE, "w") as file:
             json.dump({"ingredients": []}, file, indent=4)
 
-initialize_json()
+initialize_pantry()
 
 # Load pantry data
 def load_pantry():
@@ -30,26 +25,31 @@ def save_pantry(data):
     with open(PANTRY_FILE, "w") as file:
         json.dump(data, file, indent=4)
 
-# Add ingredient to pantry and update display
+# Add ingredient with TinyLlama weight
 def add_ingredient(name, category, quantity, unit):
     pantry = load_pantry()
 
+    # Create new ingredient entry
     new_item = {
         "name": name,
         "category": category,
-        "quantity": f"{quantity} {unit}" if quantity else "N/A"
+        "quantity": f"{quantity} {unit}" if quantity else "N/A",
+        # "weight": weight  # Store LLM-determined importance weight
     }
 
+    # Append to pantry list and save
     pantry["ingredients"].append(new_item)
     save_pantry(pantry)
 
-    return format_pantry_display(pantry["ingredients"])
+    return f"Added {name} ({category}) - {quantity} {unit}"
+
+
 
 # Format pantry list for display
 def format_pantry_display(ingredients):
     if not ingredients:
         return "No ingredients in pantry."
-
+    
     return "\n".join([f"{item['name']} ({item['category']}) - Qty: {item['quantity']}" for item in ingredients])
 
 # Build Gradio UI
@@ -69,6 +69,13 @@ def pantry_page():
         quantity_input = gr.Textbox(placeholder="Enter quantity", label="Quantity")
 
         # Measurement Selection
+        # Standard Metric & Imperial Units
+        UNITS = [
+            "grams", "kilograms", "milliliters", "liters",  # Metric
+            "ounces", "pounds", "cups", "teaspoons", "tablespoons",  # Imperial
+            "Each"  # For ingredients that aren’t measured (e.g., tomatoes, onions)
+        ]
+
         unit_selection = gr.Dropdown(UNITS, label="Measurement", interactive=True)
 
         # Pantry Display

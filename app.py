@@ -1,8 +1,8 @@
 import gradio as gr
 from pages.pantry_ui import pantry_page
-# from pages.stove_ui import stove_page
-# from pages.cookbooks_ui import cookbooks_page
-# from pages.computer_ui import computer_page
+from pages.stove_ui import stove_page
+from pages.cookbooks_ui import cookbooks_page
+from pages.computer_ui import computer_page
 
 def main():
     with gr.Blocks() as app:
@@ -28,15 +28,15 @@ def main():
 
         # Stove Page UI (Placeholder)
         with stove_section:
-            gr.Markdown("## Stove & Oven")
+            stove_page()
 
-        # Cookbooks Page UI (Placeholder)
+        # Cookbooks Page UI 
         with cookbooks_section:
-            gr.Markdown("## Cookbooks")
+            cookbooks_page()
 
         # Computer Page UI (Placeholder)
         with computer_section:
-            gr.Markdown("## Computer")
+            computer_page()
 
         # Click Events to Show Sections
         pantry_btn.click(lambda: [gr.update(visible=True), gr.update(visible=False), gr.update(visible=False), gr.update(visible=False)],

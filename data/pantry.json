@@ -1,5 +1,10 @@
 {
     "ingredients": [
-        
+        {
+            "name": "Chicken",
+            "category": "Staple",
+            "quantity": "4 pounds",
+            "weight": 0.5
+        }
     ]
 }
